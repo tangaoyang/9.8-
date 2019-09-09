@@ -45,35 +45,31 @@
     if (indexPath.row == 0) {
         return 320;
     } else if (indexPath.row == 1) {
-        return 180;
+        return 250;
     } else {
         return 220;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"456");
 //    NSArray *imageArr = @[@"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @""];
     
     if (indexPath.row == 0) {
-        NSLog(@"0");
         upTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"up" forIndexPath:indexPath];
         cell.headImageView.image = [UIImage imageNamed:@"head.png"];
         cell.frameImageView.image = [UIImage imageNamed:@"frame.png"];
         return cell;
     } else if (indexPath.row == 1) {
-        NSLog(@"1");
         scrollTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"scroll" forIndexPath:indexPath];
-        cell.scroll.delegate = self;
-//        cell.scroll.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width * 2, 250);
         for (int i = 0; i < 8; i++) {
             UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"t%d.png", i + 1]]];
             imageView.frame = CGRectMake(5 + i * [UIScreen mainScreen].bounds.size.width / 4, 5, [UIScreen mainScreen].bounds.size.width / 4 - 2, 180);
-            [cell.scroll addSubview:imageView];
+            [cell.imageArr addObject:imageView];
+            [cell.scroll addSubview:cell.imageArr[i]];
         }
+        
         return cell;
     } else {
-        NSLog(@"else");
         if (indexPath.row % 2) {
             TAYTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"111" forIndexPath:indexPath];
             cell.showLabel.text = _showLabelArr[indexPath.row];
@@ -92,7 +88,9 @@
     }
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
 
 /*
 #pragma mark - Navigation

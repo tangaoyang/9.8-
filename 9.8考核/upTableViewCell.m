@@ -52,4 +52,8 @@
     // Configure the view for the selected state
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [_textField endEditing:YES];
+}
+
 @end

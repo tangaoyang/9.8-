@@ -12,7 +12,6 @@
 @implementation TAYTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    NSLog(@"1cell");
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     _showLabel = [[UILabel alloc] init];

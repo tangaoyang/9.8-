@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *nowBtn;
 @property (nonatomic, strong) UIButton *afterBtn;
 @property (nonatomic, strong) UIScrollView *scroll;
+@property (nonatomic, strong) NSMutableArray *imageArr;
+
 
 @end
 
